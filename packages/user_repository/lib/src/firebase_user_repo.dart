@@ -1,11 +1,11 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'dart:developer';
 
-import 'package:user_repositiory/src/entities/entities.dart';
-import 'package:user_repositiory/src/models/user.dart';
-import 'package:user_repositiory/src/user_repo.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:user_repository/user_repository.dart';
 
 class FirebaseUserRepo implements UserRepository {
   final FirebaseAuth _firebaseAuth;
