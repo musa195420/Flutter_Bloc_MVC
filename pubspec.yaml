@@ -30,6 +30,8 @@ dependencies:
   font_awesome_flutter: ^10.8.0
   user_repository:  # ✅ correct spelling
     path: packages/user_repository
+  pizza_repository:  # ✅ correct spelling
+    path: packages/pizza_repository
 dev_dependencies:
   flutter_test:
     sdk: flutter
