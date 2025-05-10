@@ -17,5 +17,46 @@ static  bool emailRegex(String value)
     return false;
   }
 
+  static bool containsupperCase(String value)
+  {
+    if(RegExp(r'[A-Z]').hasMatch(value))
+    {
+      return true;
+    }
+    return false;
+  }
+
+
+  static bool containslowerCase(String value)
+  {
+    if(RegExp(r'[a-z]').hasMatch(value))
+    {
+      return true;
+    }
+    return false;
+  }
+
+
+   static bool containsNumber(String value)
+  {
+    if(RegExp(r'[0-9]').hasMatch(value))
+    {
+      return true;
+    }
+    return false;
+  }
+
+
+  static bool containsSpecialChar(String value)
+  {
+    if(RegExp(r'^(?=.*?[!@#$&*~`)\%\-(_+=;:,.<>/?"[{\]}\|^])').hasMatch(value))
+    {
+      return true;
+    }
+    return false;
+  }
+
+
+
   
 }

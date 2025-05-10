@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/my_text_field.dart';
+import '../../../helpers/regex.dart';
 import '../blocs/sign_up_bloc/sign_up_bloc.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -78,51 +79,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   keyboardType: TextInputType.visiblePassword,
                   prefixIcon: const Icon(CupertinoIcons.lock_fill),
                   onChanged: (val) {
-                    if(val!.contains(RegExp(r'[A-Z]'))) {
-                      setState(() {
-                        containsUpperCase = true;
+                  
+                     if(val!=null){
+                       setState(() {
+                        containsUpperCase = RegexChecker.containsupperCase(val);
+                         containsLowerCase =RegexChecker.containslowerCase(val);
+                         containsNumber=RegexChecker.containsNumber(val);
+                         containsSpecialChar=RegexChecker.containsSpecialChar(val);
+                         contains8Length = val.length >= 8;
                       });
-                    } else {
-                      setState(() {
-                        containsUpperCase = false;
-                      });
-                    }
-                    if(val.contains(RegExp(r'[a-z]'))) {
-                      setState(() {
-                        containsLowerCase = true;
-                      });
-                    } else {
-                      setState(() {
-                        containsLowerCase = false;
-                      });
-                    }
-                    if(val.contains(RegExp(r'[0-9]'))) {
-                      setState(() {
-                        containsNumber = true;
-                      });
-                    } else {
-                      setState(() {
-                        containsNumber = false;
-                      });
-                    }
-                    if(val.contains(RegExp(r'^(?=.*?[!@#$&*~`)\%\-(_+=;:,.<>/?"[{\]}\|^])'))) {
-                      setState(() {
-                        containsSpecialChar = true;
-                      });
-                    } else {
-                      setState(() {
-                        containsSpecialChar = false;
-                      });
-                    }
-                    if(val.length >= 8) {
-                      setState(() {
-                        contains8Length = true;
-                      });
-                    } else {
-                      setState(() {
-                        contains8Length = false;
-                      });
-                    }
+                     }
+                   
+                    
                     return null;
                   },
                   suffixIcon: IconButton(
@@ -141,7 +109,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   validator: (val) {
                     if(val!.isEmpty) {
                       return 'Please fill in this field';			
-                    } else if(!RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~`)\%\-(_+=;:,.<>/?"[{\]}\|^]).{8,}$').hasMatch(val)) {
+                    } else if(!RegexChecker.passwordRegex(val)) {
                       return 'Please enter a valid password';
                     }
                     return null;
