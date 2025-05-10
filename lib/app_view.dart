@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_mvc/blocs/authentication_bloc/authentication_bloc.dart';
 import 'package:flutter_bloc_mvc/extenshions/themes.dart';
+import 'package:flutter_bloc_mvc/screens/auth/views/welcome_screen.dart';
+import 'package:flutter_bloc_mvc/screens/home/views/home_screen.dart';
 
 class MyAppView extends StatelessWidget {
   const MyAppView({super.key});
@@ -9,7 +13,16 @@ class MyAppView extends StatelessWidget {
     return MaterialApp(
       title: "My Pizza App",
       debugShowCheckedModeBanner: false,
-      theme: pizzaTheme
+      theme: pizzaTheme,
+      home:BlocBuilder<AuthenticationBloc,AuthenticationState>(builder: (context,state){
+        if(state.status==AuthenticationStatus.authenticated)
+        {
+          return HomeScreen();
+        }
+        else{
+          return WelcomeScreen();
+        }
+      })
     );
   }
 }
