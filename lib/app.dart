@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         // We build the bloc here instead of registering it globally in GetIt.
         BlocProvider(
           create: (_) => AuthenticationBloc(
-            userRepository: sl<UserRepository>(),
+            userRepository: getIt<UserRepository>(),
           ),
         ),
       ],
