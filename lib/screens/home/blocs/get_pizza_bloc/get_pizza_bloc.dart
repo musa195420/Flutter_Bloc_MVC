@@ -10,18 +10,17 @@ part 'get_pizza_state.dart';
 class GetPizzaBloc extends Bloc<GetPizzaEvent, GetPizzaState> {
   final PizzaRepo _pizzaRepo;
   GetPizzaBloc(this._pizzaRepo) : super(GetPizzaInitial()) {
-    on<GetPizza>((event, emit) async{
-     emit(GetPizzaLoading());
-     try{
-      List<Pizza> pizzas =await _pizzaRepo.getPizzas();
-      emit(GetPizzaSuccess(pizzas));
-     }
-     catch(e)
-     {
-  log(e.toString());
-  emit(GetPizzaFailure());
-  rethrow;
-     }
+    on<GetPizza>((event, emit) async {
+      emit(GetPizzaLoading());
+      try {
+        List<Pizza> pizzas = await _pizzaRepo.getPizzas();
+
+        emit(GetPizzaSuccess(pizzas));
+      } catch (e) {
+        log(e.toString());
+        emit(GetPizzaFailure(e.toString()));
+        rethrow;
+      }
     });
   }
 }

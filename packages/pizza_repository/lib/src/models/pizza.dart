@@ -1,7 +1,6 @@
 import 'package:pizza_repository/src/models/macros.dart';
 
 import '../entities/entities.dart';
-import 'models.dart';
 
 class Pizza {
   String pizzaId;

@@ -10,9 +10,9 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -22,33 +22,24 @@ class DetailsScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.width - (40),
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(30),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.grey,
-                    offset: Offset(3, 3),
-                    blurRadius: 5
-                  )
-                ],
-                image: DecorationImage(
-                  image: NetworkImage(
-                    pizza.picture
-                  )
-                )
-              ),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: const [
+                    BoxShadow(
+                        color: Colors.grey, offset: Offset(3, 3), blurRadius: 5)
+                  ],
+                  image: DecorationImage(image: NetworkImage(pizza.picture))),
             ),
-            const SizedBox(height: 30,),
+            const SizedBox(
+              height: 30,
+            ),
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(30),
                 boxShadow: const [
                   BoxShadow(
-                    color: Colors.grey,
-                    offset: Offset(3, 3),
-                    blurRadius: 5
-                  )
+                      color: Colors.grey, offset: Offset(3, 3), blurRadius: 5)
                 ],
               ),
               child: Padding(
@@ -63,9 +54,7 @@ class DetailsScreen extends StatelessWidget {
                           child: Text(
                             pizza.name,
                             style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold
-                            ),
+                                fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                         ),
                         Expanded(
@@ -78,19 +67,19 @@ class DetailsScreen extends StatelessWidget {
                                 Text(
                                   "\$${pizza.price - (pizza.price * (pizza.discount) / 100)}",
                                   style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Theme.of(context).colorScheme.primary
-                                  ),
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary),
                                 ),
                                 Text(
                                   "\$${pizza.price}.00",
                                   style: const TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.grey,
-                                    decoration: TextDecoration.lineThrough
-                                  ),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey,
+                                      decoration: TextDecoration.lineThrough),
                                 ),
                               ],
                             ),
@@ -98,7 +87,9 @@ class DetailsScreen extends StatelessWidget {
                         )
                       ],
                     ),
-                    const SizedBox(height: 12,),
+                    const SizedBox(
+                      height: 12,
+                    ),
                     Row(
                       children: [
                         MyMacroWidget(
@@ -106,19 +97,25 @@ class DetailsScreen extends StatelessWidget {
                           value: pizza.macros.calories,
                           icon: FontAwesomeIcons.fire,
                         ),
-                        const SizedBox(width: 10,),
+                        const SizedBox(
+                          width: 10,
+                        ),
                         MyMacroWidget(
                           title: "Protein",
                           value: pizza.macros.proteins,
                           icon: FontAwesomeIcons.dumbbell,
                         ),
-                        const SizedBox(width: 10,),
+                        const SizedBox(
+                          width: 10,
+                        ),
                         MyMacroWidget(
                           title: "Fat",
                           value: pizza.macros.fat,
                           icon: FontAwesomeIcons.oilWell,
                         ),
-                        const SizedBox(width: 10,),
+                        const SizedBox(
+                          width: 10,
+                        ),
                         MyMacroWidget(
                           title: "Carbs",
                           value: pizza.macros.carbs,
@@ -126,29 +123,26 @@ class DetailsScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 40,),
+                    const SizedBox(
+                      height: 40,
+                    ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width,
                       height: 50,
                       child: TextButton(
-                        onPressed: () {
-                          
-                        },
+                        onPressed: () {},
                         style: TextButton.styleFrom(
-                          elevation: 3.0,
-                          backgroundColor: Colors.black,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)
-                          )
-                        ),
+                            elevation: 3.0,
+                            backgroundColor: Colors.black,
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10))),
                         child: const Text(
                           "Buy Now",
                           style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600
-                          ),
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600),
                         ),
                       ),
                     )
