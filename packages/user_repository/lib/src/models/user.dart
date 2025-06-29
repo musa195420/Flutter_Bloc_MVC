@@ -1,4 +1,3 @@
-
 import '../entities/entities.dart';
 
 class MyUser {
@@ -28,10 +27,19 @@ class MyUser {
     );
   }
 
-  static MyUser fromEntity(MyUserEntity entity)
-  {
+  MyUser copyWith(
+      {String? userId, String? email, String? name, bool? hasActiveCart}) {
     return MyUser(
-      userId:entity. userId,
+      hasActiveCart: hasActiveCart ?? this.hasActiveCart,
+      userId: userId ?? this.userId,
+      email: email ?? this.email,
+      name: name ?? this.name,
+    );
+  }
+
+  static MyUser fromEntity(MyUserEntity entity) {
+    return MyUser(
+      userId: entity.userId,
       email: entity.email,
       hasActiveCart: false,
       name: entity.name,
@@ -39,7 +47,7 @@ class MyUser {
   }
 
   @override
-  String toString(){
+  String toString() {
     return 'MyUser: $userId,$email,$hasActiveCart,$name';
   }
 }

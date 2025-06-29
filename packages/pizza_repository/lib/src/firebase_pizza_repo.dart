@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:pizza_repository/pizza_repository.dart';
 
-class FirebasePizzaRepo implements PizzaRepo {
+class FirebasePizzaRepo implements PizzaRepository {
   final pizzaCollection = FirebaseFirestore.instance.collection('pizzas');
 
   @override

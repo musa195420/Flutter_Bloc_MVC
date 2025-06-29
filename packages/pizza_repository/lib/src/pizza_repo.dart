@@ -1,5 +1,5 @@
 import 'models/pizza.dart';
 
-abstract class PizzaRepo {
-  Future <List<Pizza>> getPizzas();
+abstract class PizzaRepository {
+  Future<List<Pizza>> getPizzas();
 }
